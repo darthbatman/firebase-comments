@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Firebase Comments</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+
+		<!-- <h1 id="bigOne"></h1> -->
+
+		<div id="comment-area">
+			<div class="comment">
+				<p class="username">darthbatman</p>
+				<p class="comment_body">Wow! Cool site!</p>
+			</div>
+		</div>
+
+		<input id="username_field" type="text"/>
+		<br>
+		<textarea id="comment_body_field"></textarea>
+		<br>
+		<button id="submit">Submit</button>
+
+		<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
+  		<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+  		<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyD3uA_mMoDqG9C3bEMKLjBJNt6V5au8U8k",
+				authDomain: "fir-comments-3fe01.firebaseapp.com",
+				databaseURL: "https://fir-comments-3fe01.firebaseio.com",
+				storageBucket: "fir-comments-3fe01.appspot.com",
+			};
+			firebase.initializeApp(config);
+			// var bigOne = document.getElementById('bigOne');
+			// var dbRef = firebase.database().ref().child('text');
+			// dbRef.on('value', function(txt){
+			// 	bigOne.innerText = txt.val();
+			// });
+			var dbRef = firebase.database().ref().child('comments');
+			$('#submit').on('click', function(){
+				dbRef.push({
+					username: $('#username_field').val(),
+					comment_body: $('#comment_body_field').val()
+				});
+			});
+			
+		</script>
+		    
+	</body>
+</html>

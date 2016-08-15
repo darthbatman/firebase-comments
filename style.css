@@ -1,0 +1,12 @@
+.username {
+	color: blue;
+}
+.comment_body {
+	color: red;
+}
+.comment {
+	border-radius: 4px;
+    border: 2px solid #a3c2c2;
+    padding: 2%;
+    width: 90%;
+}
