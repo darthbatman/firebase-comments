@@ -15,5 +15,6 @@ $('#submit').on('click', function(){
 	});
 });
 dbRef.on('child_added', function(data){
-	$('#comment-area').after('<div class="comment"><p class="username">' + data.val().username + '</p><p class="comment_body">' + data.val().comment_body + '</p></div>');
+	var d = new Date(data.val().date);
+	$('#comment-area').after('<div class="comment"><p class="username">' + data.val().username + " - " + d.toLocaleString() + '</p><p class="comment_body">' + data.val().comment_body + '</p></div>');
 });
